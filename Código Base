@@ -1,0 +1,122 @@
+Sub c()
+
+
+
+Dim TAMANHO As LongLong
+TAMANHO = 50  '10345
+
+Dim LinhaDestino As LongLong
+LinhaDestino = 2
+Dim LinhaExtracao As LongLong
+LinhaExtracao = 2
+
+
+
+
+
+Dim TotalTPV11 As Double  'pilhas
+Dim TotalTPV21 As Double  'pilhas
+Do While LinhaDestino <= TAMANHO
+
+If Range("AA" & LinhaExtracao).Value <> Range("AA" & LinhaExtracao - 1).Value And Range("Y" & LinhaExtracao).Value <> "" And Range("Y" & LinhaExtracao).Value <> "NOME" Then 'so se o nome for diferente do nome de baixo que podemos zerar os valores para usarmos novamente em outra pessoa
+TotalTPV11 = 0
+TotalTPV21 = 0
+End If
+
+If Range("AA" & LinhaExtracao).Value = "" And Range("Y" & LinhaExtracao).Value = "" Then 'se o nome ou o CPF forem nullos então pulamos uma linha de Extração
+    If Range("AA" & LinhaExtracao + 1).Value = "" And Range("Y" & LinhaExtracao + 1).Value = "" Then
+    'MsgBox "Pula duas linha"
+    LinhaExtracao = LinhaExtracao + 2
+    End If
+    
+    If Range("AA" & LinhaExtracao).Value = "" And Range("AA" & LinhaExtracao + 1).Value <> "" Then 'se o nome for nullos // ver por que teoricamente esse codigo nunca vai rodar
+        MsgBox "Pula uma linha"
+        LinhaExtracao = LinhaExtracao = LinhaExtracao + 1
+        End If
+
+Else
+Range("A" & LinhaDestino).Value = Range("AA" & LinhaExtracao).Value ' nome
+Range("B" & LinhaDestino).Value = Range("Y" & LinhaExtracao).Value ' cpf
+    
+    If Range("AB" & LinhaExtracao).Value = 11 Then
+    TotalTPV11 = TotalTPV11 + Range("AC" & LinhaExtracao).Value
+    Range("C" & LinhaDestino).Value = TotalTPV11
+        If Range("AA" & LinhaExtracao).Value = Range("AA" & LinhaExtracao + 1).Value And Range("AB" & LinhaExtracao).Value = 11 And Range("AB" & LinhaExtracao + 1).Value = 11 Then ' mostro se tem a soma de dois valores do codigo 11
+        Range("H" & LinhaDestino).Value = "2X 11"
+        End If
+    End If
+        
+    If Range("AB" & LinhaExtracao).Value = 21 Then
+    TotalTPV21 = TotalTPV21 + Range("AC" & LinhaExtracao).Value
+    Range("E" & LinhaDestino).Value = TotalTPV21
+        If Range("AA" & LinhaExtracao).Value = Range("AA" & LinhaExtracao + 1).Value And Range("AB" & LinhaExtracao).Value = 21 And Range("AB" & LinhaExtracao + 1).Value = 21 Then ' mostro se tem a soma de dois valores do codigo 21
+        Range("I" & LinhaDestino).Value = "2X 21"
+            If Range("H" & LinhaDestino).Value = "" Then
+            Range("H" & LinhaDestino).Value = "<-----------"
+            End If
+        End If
+    End If
+    
+    
+    
+    If Range("AB" & LinhaExtracao).Value <> "" And Range("AB" & LinhaExtracao).Value <> 11 And Range("AB" & LinhaExtracao).Value <> 21 Then
+    
+        Range("J" & LinhaDestino).Value = "E"
+        Range("J" & LinhaDestino).Interior.Color = RGB(153, 255, 204)
+        If Range("I" & LinhaDestino).Value = "" And Range("H" & LinhaDestino).Value = "" Then
+            Range("H" & LinhaDestino).Value = "<-----------"
+            Range("I" & LinhaDestino).Value = "------------"
+            Range("H" & LinhaDestino).Interior.Color = RGB(153, 255, 204)
+            Range("I" & LinhaDestino).Interior.Color = RGB(153, 255, 204)
+        End If
+        
+
+    
+    End If
+    '' atenção codigo repetido
+    
+    
+    If Range("AD" & LinhaExtracao).Value <> "" Then 'recolimento
+    Range("D" & LinhaDestino).Value = Range("AD" & LinhaExtracao).Value
+    End If
+        
+    If Range("AD" & LinhaExtracao).Value <> "" And Range("AD" & LinhaExtracao).Value <> 108201 Then 'recolimento aviso de exceção se for diferente de zero é diferente 108201
+    Range("D" & LinhaDestino).Value = Range("AD" & LinhaExtracao).Value ' grava valor na tabela nova de acordo com a linha de destino
+    Range("AD" & LinhaExtracao).Interior.Color = vbRed ' pinta de vermelho a linha de extração
+    Range("D" & LinhaDestino).Interior.Color = vbRed ' pinta de vermelho a linha de destino
+    End If
+        
+        
+    If Range("AE" & LinhaExtracao).Value <> "" Then 'VRC
+    Range("F" & LinhaDestino).Value = Range("AE" & LinhaExtracao).Value
+    End If
+        
+    If Range("AF" & LinhaExtracao).Value <> "" Then 'VRC
+    Range("G" & LinhaDestino).Value = Range("AF" & LinhaExtracao).Value
+    End If
+        
+        
+    If Range("AA" & LinhaExtracao).Value = Range("AA" & LinhaExtracao + 1).Value And Range("Y" & LinhaExtracao).Value = Range("Y" & LinhaExtracao + 1).Value Then
+    LinhaExtracao = LinhaExtracao + 1
+    Else
+    LinhaDestino = LinhaDestino + 1
+    LinhaExtracao = LinhaExtracao + 1
+    End If
+        
+    
+    
+    
+    
+    
+End If
+
+
+
+
+
+
+Loop
+    
+
+
+End Sub
