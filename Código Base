@@ -3,7 +3,7 @@ Sub c()
 
 
 Dim TAMANHO As LongLong
-TAMANHO = 50  
+TAMANHO = 50  ' teste 
 
 Dim LinhaDestino As LongLong
 LinhaDestino = 2
@@ -71,7 +71,7 @@ Range("B" & LinhaDestino).Value = Range("Y" & LinhaExtracao).Value ' cpf
         End If
         
 
-    
+    'teste
     End If
     '' atenção codigo repetido
     
