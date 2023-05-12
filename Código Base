@@ -3,7 +3,7 @@ Sub c()
 
 
 Dim TAMANHO As LongLong
-TAMANHO = 50  '10345
+TAMANHO = 50  
 
 Dim LinhaDestino As LongLong
 LinhaDestino = 2
