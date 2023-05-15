@@ -1,0 +1,33 @@
+Sub c()
+
+
+
+Dim L As LongLong
+Dim Repetidos As Integer
+Dim NaoRepetidos As Integer
+NaoRepetidos = 0
+Repetidos = 0
+L = 2
+
+'Do While L <= TAMANHO
+Do While Range("A" & L).Value <> ""
+    If Range("A" & L).Value = Range("A" & L + 1).Value Then
+        Repetidos = Repetidos + 1
+        L = L + 1
+    Else
+        NaoRepetidos = NaoRepetidos + 1
+        L = L + 1
+    End If
+    
+
+
+Loop
+
+    Range("A" & L + 3).Value = "Repetidos"
+    Range("A" & L + 4).Value = "Não Repetidos"
+    
+    Range("B" & L + 3).Value = Repetidos
+    Range("B" & L + 4).Value = NaoRepetidos + 1
+
+
+End Sub
