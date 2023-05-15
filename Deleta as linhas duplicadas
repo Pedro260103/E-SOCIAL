@@ -1,0 +1,24 @@
+Sub a()
+
+Dim tamanho As Integer
+Dim contador As Integer
+
+
+tamanho = 50
+contador = 1
+
+Do While contador <= tamanho
+    If Range("A" & contador).Value = "" Then
+        Rows(contador).Delete
+        Rows(contador).Delete
+        contador = contador + 1
+    Else
+        Range("B" & contador).Value = "OK"
+        contador = contador + 1
+    End If
+    
+Loop
+
+
+
+End Sub
