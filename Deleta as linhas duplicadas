@@ -1,13 +1,13 @@
 Sub a()
 
-Dim TAMANHOTotal As LongLong
+Dim TAMANHOExtracao As LongLong
 Dim contador As LongLong
 
 
-TAMANHOTotal = 50
+TAMANHOExtracao = 50
 contador = 2
 
-Do While contador <= TAMANHOTotal
+Do While contador <= TAMANHOExtracao
     If Range("AA" & contador).Value = "" And Range("Y" & contador).Value = "" Then
         Rows(contador).Delete
         Rows(contador).Delete
