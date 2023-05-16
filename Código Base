@@ -1,10 +1,6 @@
 Sub c()
 
-
-
 Dim TAMANHO As LongLong
-TAMANHO = 50  ' teste 
-
 Dim LinhaDestino As LongLong
 LinhaDestino = 2
 Dim LinhaExtracao As LongLong
@@ -16,6 +12,40 @@ LinhaExtracao = 2
 
 Dim TotalTPV11 As Double  'pilhas
 Dim TotalTPV21 As Double  'pilhas
+
+
+
+Do While Range("AA" & LinhaExtracao).Value <> "" ' fala com quantas pessoas temos que trabalar
+    If Range("AA" & LinhaExtracao).Value <> Range("AA" & LinhaExtracao + 1).Value Then
+            
+             
+        pessoas = pessoas + 1
+        LinhaExtracao = LinhaExtracao + 1
+             
+             
+             
+        Else
+        LinhaExtracao = LinhaExtracao + 1
+        End If
+    
+Loop
+
+
+    MsgBox "Tudo certo ! No próximo código(código base -> que está no GitHub) coloque o TAMANHO como " & pessoas + 1
+    TAMANHO = pessoas + 1
+
+
+
+
+
+
+LinhaExtracao = 2
+
+
+
+
+
+
 Do While LinhaDestino <= TAMANHO
 
 If Range("AA" & LinhaExtracao).Value <> Range("AA" & LinhaExtracao - 1).Value And Range("Y" & LinhaExtracao).Value <> "" And Range("Y" & LinhaExtracao).Value <> "NOME" Then 'so se o nome for diferente do nome de baixo que podemos zerar os valores para usarmos novamente em outra pessoa
@@ -116,7 +146,4 @@ End If
 
 
 Loop
-    
-
-
 End Sub
