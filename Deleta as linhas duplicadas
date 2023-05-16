@@ -1,23 +1,26 @@
 Sub a()
 
-Dim tamanho As Integer
-Dim contador As Integer
+Dim TAMANHOTotal As LongLong
+Dim contador As LongLong
 
 
-tamanho = 50
-contador = 1
+TAMANHOTotal = 50
+contador = 2
 
-Do While contador <= tamanho
-    If Range("A" & contador).Value = "" Then
+Do While contador <= TAMANHOTotal
+    If Range("AA" & contador).Value = "" And Range("Y" & contador).Value = "" Then
         Rows(contador).Delete
         Rows(contador).Delete
         contador = contador + 1
     Else
-        Range("B" & contador).Value = "OK"
         contador = contador + 1
     End If
     
 Loop
+
+    MsgBox "Tudo certo " & contador
+
+
 
 
 
