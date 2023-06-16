@@ -12,8 +12,6 @@ Range("I7").Value = Range(coluna & linha).Value
 End Sub
 
 
-
-
 # Sintaxe
 InputBox(prompt, [ title ], [ default ], [ xpos ], [ ypos ], [ helpfile, context ] )
 
