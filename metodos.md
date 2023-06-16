@@ -10,3 +10,5 @@ implementação de metodos para o Código Base
 
 
 MsgBox "Para ler o Teclado", vbSystemModal, Teste
+
+	Sistema modal; todos os aplicativos são suspensos até que o usuário responda à caixa de mensagem.
