@@ -1,0 +1,45 @@
+Sub PreencherCores()
+    Dim rng As Range
+    Dim iRng As Range ' variavel de controlhe para o for each
+    Dim i As Long
+    Dim lbBarra As MSForms.Label
+    Dim larMaxima As Double
+    Dim progresso As Double
+    Dim lbPorcentagem As MSForms.Label2
+    
+    Set rng = Range("A1:M60")
+    
+    Set lbPorcentagem = UserForm1.Label2
+    Set lbBarra = UserForm1.Label1
+    lbBarra.Width = 0
+    larMaxima = 216
+    'rng.Select
+    
+    
+    For i = 1 To 20
+    DoEvents
+    progresso = i / 20
+    lbBarra.Width = larMaxima * progresso ' faz a barra crecer
+    
+    'lbBarra.Caption = progresso * 100 & "%" ' converte 0,05 para 5% para o usuario
+    lbBarra.Caption = FormatPercent(progresso, 0)
+    lbBarra.TextAlign = fmTextAlignRight
+    'lbPorcentagem.Caption = progresso * 100 & "%"
+    lbPorcentagem.Caption = FormatPercent(progresso, 0)
+    lbPorcentagem.TextAlign = fmTextAlignCenter
+        For Each iRng In rng
+            iRng.Interior.ColorIndex = i
+        Next
+    Next
+    
+    
+End Sub
+
+
+
+
+' Forms 
+
+Private Sub CommandButton1_Click()
+    Call PreencherCores
+End Sub
