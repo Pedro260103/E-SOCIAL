@@ -2,27 +2,27 @@ Sub a()
 
 Dim TAMANHOExtracao As LongLong
 Dim contador As LongLong
-Dim LinhasExcluidas As Integer
+Dim LinhasExcluidas Como Inteiro
 LinhasExcluidas = 0
 contador = 2
 
 
 
 
-TAMANHOExtracao = 32700 ' coloque o tamanho da sua tabela Extração
+'TAMANHOExtração = 32700 ' coloque o tamanho da sua tabela Extração
 
 
-Do While contador <= TAMANHOExtracao ' deleta as linhas vazias
-    If Range("AA" & contador).Value = "" And Range("Y" & contador).Value = "" Then
-        Rows(contador).Delete
-        Rows(contador).Delete
+Do While contador <= TAMANHOExtração ' deleta as linhas vazias
+ Se Range("AA" & contador). Valor = "" E Intervalo("Y" & contador). valor = "" então
+ Linhas(contador). Excluir
+ Linhas(contador). Excluir
         LinhasExcluidas = LinhasExcluidas + 2
         contador = contador + 1
-    Else
+ Mais
         contador = contador + 1
-    End If
+ Fim Se
     
-Loop
+Laço
 
 MsgBox "Todas as " & LinhasExcluidas & " linhas foram excluídas"
 
@@ -30,5 +30,5 @@ MsgBox "Todas as " & LinhasExcluidas & " linhas foram excluídas"
 
 
 
-End Sub
+Subfinal
 
